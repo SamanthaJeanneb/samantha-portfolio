@@ -2277,7 +2277,7 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 </script>
 
-<!-- ════════════════════════════════════════════════════════════════��══════════
+<!-- ════════════════════════════════════════════════════════════════��═���════════
      ENHANCED SCROLL ANIMATIONS & DIGITAL ASSETS
      ═══════════════════════════════════════════════════════════════════════════ -->
 
@@ -2806,9 +2806,196 @@ section {
 <!-- Digital Particles Container -->
 <div class="digital-particles" id="particles-container"></div>
 
-<!-- Noise overlay removed for clarity -->
+<!-- Animated Grid Background -->
+<div class="animated-grid-bg"></div>
 
-<!-- Digital background layers removed to prevent issues -->
+<!-- Floating Orbs -->
+<div class="floating-orbs">
+  <div class="orb orb-1"></div>
+  <div class="orb orb-2"></div>
+  <div class="orb orb-3"></div>
+</div>
+
+<!-- Scan Lines Effect -->
+<div class="scan-lines"></div>
+
+<style>
+/* Animated Grid Background */
+.animated-grid-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: -1;
+  background-image: 
+    linear-gradient(rgba(100, 255, 218, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(100, 255, 218, 0.03) 1px, transparent 1px);
+  background-size: 60px 60px;
+  animation: grid-move 20s linear infinite;
+}
+
+@keyframes grid-move {
+  0% { background-position: 0 0; }
+  100% { background-position: 60px 60px; }
+}
+
+/* Floating Orbs */
+.floating-orbs {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: -1;
+  overflow: hidden;
+}
+
+.orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.15;
+}
+
+.orb-1 {
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(100, 255, 218, 0.4) 0%, transparent 70%);
+  top: 10%;
+  left: -10%;
+  animation: float-orb-1 25s ease-in-out infinite;
+}
+
+.orb-2 {
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle, rgba(187, 134, 252, 0.3) 0%, transparent 70%);
+  top: 60%;
+  right: -5%;
+  animation: float-orb-2 30s ease-in-out infinite;
+}
+
+.orb-3 {
+  width: 250px;
+  height: 250px;
+  background: radial-gradient(circle, rgba(255, 107, 107, 0.2) 0%, transparent 70%);
+  bottom: 20%;
+  left: 30%;
+  animation: float-orb-3 35s ease-in-out infinite;
+}
+
+@keyframes float-orb-1 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  25% { transform: translate(100px, 50px) scale(1.1); }
+  50% { transform: translate(50px, 100px) scale(0.9); }
+  75% { transform: translate(-50px, 50px) scale(1.05); }
+}
+
+@keyframes float-orb-2 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33% { transform: translate(-80px, -60px) scale(1.15); }
+  66% { transform: translate(-40px, 80px) scale(0.85); }
+}
+
+@keyframes float-orb-3 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(100px, -100px) scale(1.2); }
+}
+
+/* Scan Lines Effect */
+.scan-lines {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 9997;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0, 0, 0, 0.03) 2px,
+    rgba(0, 0, 0, 0.03) 4px
+  );
+  opacity: 0.5;
+}
+
+/* Matrix Rain Effect Container */
+.matrix-rain {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: -1;
+  overflow: hidden;
+}
+
+.matrix-column {
+  position: absolute;
+  top: -100%;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 14px;
+  color: rgba(100, 255, 218, 0.15);
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  animation: matrix-fall linear infinite;
+  white-space: nowrap;
+}
+
+@keyframes matrix-fall {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(100vh); }
+}
+
+/* Glowing accent lines */
+.glow-line {
+  position: fixed;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(100, 255, 218, 0.5), transparent);
+  pointer-events: none;
+  z-index: -1;
+}
+
+.glow-line-1 {
+  top: 20%;
+  left: 0;
+  width: 30%;
+  animation: glow-pulse-line 4s ease-in-out infinite;
+}
+
+.glow-line-2 {
+  top: 50%;
+  right: 0;
+  width: 25%;
+  animation: glow-pulse-line 5s ease-in-out infinite 1s;
+}
+
+.glow-line-3 {
+  top: 80%;
+  left: 10%;
+  width: 20%;
+  animation: glow-pulse-line 6s ease-in-out infinite 2s;
+}
+
+@keyframes glow-pulse-line {
+  0%, 100% { opacity: 0.3; transform: scaleX(1); }
+  50% { opacity: 0.8; transform: scaleX(1.1); }
+}
+</style>
+
+<!-- Matrix Rain Container -->
+<div class="matrix-rain" id="matrix-rain"></div>
+
+<!-- Glowing Lines -->
+<div class="glow-line glow-line-1"></div>
+<div class="glow-line glow-line-2"></div>
+<div class="glow-line glow-line-3"></div>
 
 <!-- Scroll Accent Bar -->
 <div class="scroll-accent-bar" id="scroll-accent"></div>
@@ -2853,6 +3040,35 @@ section {
 <div class="cursor-trail" id="cursor-trail-3" style="opacity: 0.2; width: 16px; height: 16px;"></div>
 
 <script>
+// ═══════════════════════════════════════════════════════════════════════════
+// MATRIX RAIN EFFECT
+// ═══════════════════════════════════════════════════════════════════════════
+(function initMatrixRain() {
+  const container = document.getElementById('matrix-rain');
+  if (!container) return;
+  
+  const chars = '01アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲン';
+  const columnCount = Math.floor(window.innerWidth / 30);
+  
+  for (let i = 0; i < columnCount; i++) {
+    const column = document.createElement('div');
+    column.className = 'matrix-column';
+    column.style.left = (i * 30) + 'px';
+    column.style.animationDuration = (8 + Math.random() * 12) + 's';
+    column.style.animationDelay = (Math.random() * 10) + 's';
+    column.style.opacity = (0.05 + Math.random() * 0.1);
+    
+    let text = '';
+    const length = 10 + Math.floor(Math.random() * 20);
+    for (let j = 0; j < length; j++) {
+      text += chars[Math.floor(Math.random() * chars.length)];
+    }
+    column.textContent = text;
+    
+    container.appendChild(column);
+  }
+})();
+
 // ═══════════════════════════════════════════════════════════════════════════
 // DIGITAL PARTICLES SYSTEM
 // ═══════════════════════════════════════════════════════════════════════════
