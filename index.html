@@ -165,6 +165,222 @@ h1.heading-style-160px:first-child::after {
 .section_skills .skills-grid {
   background: rgba(230, 230, 230, 0.12);
 }
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   ENHANCED INTERACTIVE ANIMATIONS
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/* Smooth hover transitions for all interactive elements */
+.button,
+.text-link,
+.nav-link,
+.block-card,
+.testimonial-card,
+.sc-gallery_item-card {
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Enhanced button glow effect */
+.button::before {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  background: linear-gradient(135deg, rgba(100, 255, 218, 0.3), rgba(187, 134, 252, 0.3));
+  border-radius: inherit;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  z-index: -1;
+  filter: blur(10px);
+}
+
+.button:hover::before {
+  opacity: 1;
+}
+
+/* Gallery card enhanced hover */
+.sc-gallery_item-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.sc-gallery_item-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+  transition: left 0.6s ease;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.sc-gallery_item-card:hover::before {
+  left: 100%;
+}
+
+/* Text link animated underline */
+.text-link {
+  position: relative;
+  overflow: hidden;
+}
+
+.text-link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: currentColor;
+  transform: translateX(-101%);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.text-link:hover::after {
+  transform: translateX(0);
+}
+
+/* Enhanced focus states for accessibility */
+a:focus-visible,
+button:focus-visible,
+.button:focus-visible {
+  outline: 2px solid rgba(100, 255, 218, 0.8);
+  outline-offset: 4px;
+}
+
+/* Scroll-triggered fade for sections */
+.section_about,
+.section_services,
+.section_experience,
+.section_skills,
+.section_articles {
+  opacity: 0;
+  animation: fade-in-section 0.8s ease forwards;
+}
+
+@keyframes fade-in-section {
+  to { opacity: 1; }
+}
+
+/* Enhanced image loading state */
+.image {
+  background: linear-gradient(135deg, rgba(26, 26, 26, 0.5) 0%, rgba(40, 40, 40, 0.5) 100%);
+  background-size: 200% 200%;
+  animation: shimmer 1.5s ease-in-out infinite;
+}
+
+.image[src] {
+  animation: none;
+  background: none;
+}
+
+@keyframes shimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+/* Section heading accent line */
+.subheading {
+  position: relative;
+}
+
+.subheading::before {
+  content: '';
+  position: absolute;
+  left: -1.5rem;
+  top: 50%;
+  width: 0.75rem;
+  height: 1px;
+  background: currentColor;
+  opacity: 0.4;
+  transform: translateY(-50%);
+}
+
+/* Footer enhanced styling */
+.footer {
+  position: relative;
+  overflow: hidden;
+}
+
+.footer::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(230, 230, 230, 0.2), transparent);
+}
+
+/* Navigation enhanced blend mode glow */
+.nav {
+  position: relative;
+}
+
+.nav::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100px;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.1), transparent);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.nav.scrolled::after {
+  opacity: 1;
+}
+
+/* Project card info reveal enhancement */
+.sc-gallery_info {
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+/* Skills section card glow */
+.section_skills .block-card:hover {
+  box-shadow: 0 0 30px rgba(100, 255, 218, 0.1);
+}
+
+/* Experience card timeline dot */
+.testimonial-card.is-testimonials::before {
+  content: '';
+  position: absolute;
+  left: -1.5rem;
+  top: 1.5rem;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(100, 255, 218, 0.6);
+  box-shadow: 0 0 10px rgba(100, 255, 218, 0.4);
+}
+
+/* Responsive adjustments */
+@media (max-width: 991px) {
+  .code-bracket {
+    display: none;
+  }
+  
+  .cursor-trail {
+    display: none !important;
+  }
+}
+
+@media (max-width: 479px) {
+  .digital-particles {
+    opacity: 0.5;
+  }
+  
+  .noise-overlay {
+    opacity: 0.01;
+  }
+}
 </style><script type="text/javascript">!function(o,c){var n=c.documentElement,t=" w-mod-";n.className+=t+"js",("ontouchstart"in o||o.DocumentTouch&&c instanceof DocumentTouch)&&(n.className+=t+"touch")}(window,document);</script><link href="images/659f9d73a43bebcc5383d492_mw-favicon.svg" rel="shortcut icon" type="image/x-icon"><link href="images/659f9d78ea31a089946379f3_mw-webclip.svg" rel="apple-touch-icon"><style>
 /* Avoid flickering between pages */
 .page-transition {
@@ -1919,5 +2135,1073 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 });
+</script>
+
+<!-- ═══════════════════════════════════════════════════════════════════════════
+     ENHANCED SCROLL ANIMATIONS & DIGITAL ASSETS
+     ═══════════════════════════════════════════════════════════════════════════ -->
+
+<!-- Floating Digital Particles Background -->
+<style>
+.digital-particles {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.particle {
+  position: absolute;
+  font-family: 'JetBrains Mono', monospace;
+  color: rgba(100, 255, 218, 0.15);
+  font-size: 0.7rem;
+  animation: float-particle 20s linear infinite;
+  opacity: 0;
+}
+
+.particle.code-symbol {
+  color: rgba(187, 134, 252, 0.12);
+}
+
+@keyframes float-particle {
+  0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+  10% { opacity: 0.6; }
+  90% { opacity: 0.6; }
+  100% { transform: translateY(-100vh) rotate(360deg); opacity: 0; }
+}
+
+/* Glitch text effect for headings on scroll */
+.glitch-text {
+  position: relative;
+}
+
+.glitch-text::before,
+.glitch-text::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+}
+
+.glitch-text::before {
+  color: #ff00ff;
+  animation: glitch-anim 0.3s ease-in-out;
+  clip-path: polygon(0 0, 100% 0, 100% 35%, 0 35%);
+  transform: translateX(-2px);
+}
+
+.glitch-text::after {
+  color: #00ffff;
+  animation: glitch-anim 0.3s ease-in-out reverse;
+  clip-path: polygon(0 65%, 100% 65%, 100% 100%, 0 100%);
+  transform: translateX(2px);
+}
+
+.glitch-active .glitch-text::before,
+.glitch-active .glitch-text::after {
+  opacity: 0.8;
+}
+
+@keyframes glitch-anim {
+  0%, 100% { transform: translateX(0); }
+  20% { transform: translateX(-3px); }
+  40% { transform: translateX(3px); }
+  60% { transform: translateX(-1px); }
+  80% { transform: translateX(1px); }
+}
+
+/* Scroll-triggered reveal animations */
+.reveal-on-scroll {
+  opacity: 0;
+  transform: translateY(60px);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal-on-scroll.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal-on-scroll.delay-1 { transition-delay: 0.1s; }
+.reveal-on-scroll.delay-2 { transition-delay: 0.2s; }
+.reveal-on-scroll.delay-3 { transition-delay: 0.3s; }
+.reveal-on-scroll.delay-4 { transition-delay: 0.4s; }
+
+/* Stagger children animation */
+.stagger-children > * {
+  opacity: 0;
+  transform: translateY(40px);
+}
+
+.stagger-children.active > *:nth-child(1) { animation: stagger-in 0.6s 0.0s forwards cubic-bezier(0.16, 1, 0.3, 1); }
+.stagger-children.active > *:nth-child(2) { animation: stagger-in 0.6s 0.1s forwards cubic-bezier(0.16, 1, 0.3, 1); }
+.stagger-children.active > *:nth-child(3) { animation: stagger-in 0.6s 0.2s forwards cubic-bezier(0.16, 1, 0.3, 1); }
+.stagger-children.active > *:nth-child(4) { animation: stagger-in 0.6s 0.3s forwards cubic-bezier(0.16, 1, 0.3, 1); }
+.stagger-children.active > *:nth-child(5) { animation: stagger-in 0.6s 0.4s forwards cubic-bezier(0.16, 1, 0.3, 1); }
+.stagger-children.active > *:nth-child(6) { animation: stagger-in 0.6s 0.5s forwards cubic-bezier(0.16, 1, 0.3, 1); }
+
+@keyframes stagger-in {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Magnetic hover effect for buttons and links */
+.magnetic-element {
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Code terminal typing effect */
+.terminal-text {
+  overflow: hidden;
+  white-space: nowrap;
+  border-right: 2px solid currentColor;
+  animation: typing 3s steps(40, end), blink-caret 0.75s step-end infinite;
+}
+
+@keyframes typing {
+  from { width: 0; }
+  to { width: 100%; }
+}
+
+@keyframes blink-caret {
+  from, to { border-color: transparent; }
+  50% { border-color: currentColor; }
+}
+
+/* Parallax depth layers */
+.parallax-layer {
+  will-change: transform;
+}
+
+.parallax-layer.depth-1 { --parallax-speed: 0.1; }
+.parallax-layer.depth-2 { --parallax-speed: 0.2; }
+.parallax-layer.depth-3 { --parallax-speed: 0.3; }
+
+/* Scroll progress accent bar */
+.scroll-accent-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #64ffda, #bb86fc, #ff6b6b);
+  width: 0%;
+  z-index: 9999;
+  transition: width 0.1s ease-out;
+}
+
+/* Image reveal mask animation */
+.image-reveal {
+  position: relative;
+  overflow: hidden;
+}
+
+.image-reveal::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--color--black, #1a1a1a);
+  transform: scaleX(1);
+  transform-origin: right;
+  transition: transform 1s cubic-bezier(0.77, 0, 0.175, 1);
+}
+
+.image-reveal.revealed::after {
+  transform: scaleX(0);
+}
+
+/* Text scramble effect */
+.scramble-text {
+  display: inline-block;
+}
+
+/* Floating code brackets decoration */
+.code-bracket {
+  position: fixed;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 8rem;
+  opacity: 0.03;
+  pointer-events: none;
+  z-index: 0;
+  color: currentColor;
+}
+
+.code-bracket.left {
+  left: 2vw;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.code-bracket.right {
+  right: 2vw;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+/* Section divider animation */
+.section-divider {
+  position: relative;
+  height: 1px;
+  background: transparent;
+  overflow: hidden;
+}
+
+.section-divider::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, currentColor, transparent);
+  transform: translateX(-100%);
+  animation: divider-slide 2s ease-out forwards;
+}
+
+@keyframes divider-slide {
+  to { transform: translateX(100%); }
+}
+
+/* 3D card tilt on hover */
+.card-3d {
+  transform-style: preserve-3d;
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.card-3d:hover {
+  transform: perspective(1000px) rotateY(5deg) rotateX(5deg) scale(1.02);
+}
+
+/* Noise texture overlay */
+.noise-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 9998;
+  opacity: 0.015;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+}
+
+/* Cursor trail effect */
+.cursor-trail {
+  position: fixed;
+  width: 8px;
+  height: 8px;
+  background: rgba(100, 255, 218, 0.6);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9999;
+  mix-blend-mode: difference;
+  transition: transform 0.1s ease-out;
+}
+
+/* Smooth section snap hints */
+@media (min-width: 992px) {
+  .snap-section {
+    scroll-snap-align: start;
+  }
+}
+
+/* Animated underline for links */
+.animated-underline {
+  position: relative;
+  text-decoration: none;
+}
+
+.animated-underline::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: currentColor;
+  transition: width 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.animated-underline:hover::after {
+  width: 100%;
+}
+
+/* Breathing animation for CTAs */
+.breathe {
+  animation: breathe 3s ease-in-out infinite;
+}
+
+@keyframes breathe {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.02); }
+}
+
+/* Split color text effect */
+.split-color {
+  background: linear-gradient(90deg, #64ffda 50%, currentColor 50%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-size: 200% 100%;
+  animation: split-reveal 1.5s ease forwards;
+}
+
+@keyframes split-reveal {
+  from { background-position: 100% 0; }
+  to { background-position: 0% 0; }
+}
+
+/* Scroll velocity blur */
+.velocity-blur {
+  transition: filter 0.2s ease-out;
+}
+
+.velocity-blur.scrolling-fast {
+  filter: blur(1px);
+}
+</style>
+
+<!-- Digital Particles Container -->
+<div class="digital-particles" id="particles-container"></div>
+
+<!-- Noise Overlay -->
+<div class="noise-overlay"></div>
+
+<!-- Digital Art Background Layers -->
+<div class="digital-bg-layer layer-1" style="
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: -1;
+  opacity: 0.08;
+  background-image: url('/public/assets/digital-grid-pattern.jpg');
+  background-size: cover;
+  background-position: center;
+  mix-blend-mode: overlay;
+"></div>
+
+<div class="digital-bg-layer layer-2" style="
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  width: 50vw;
+  height: 50vh;
+  pointer-events: none;
+  z-index: -1;
+  opacity: 0.05;
+  background-image: url('/public/assets/tech-particles.jpg');
+  background-size: cover;
+  background-position: center;
+  mix-blend-mode: screen;
+  border-radius: 50%;
+  filter: blur(40px);
+"></div>
+
+<!-- Scroll Accent Bar -->
+<div class="scroll-accent-bar" id="scroll-accent"></div>
+
+<!-- Code Brackets Decoration -->
+<div class="code-bracket left" aria-hidden="true">{</div>
+<div class="code-bracket right" aria-hidden="true">}</div>
+
+<!-- Cursor Trail Elements -->
+<div class="cursor-trail" id="cursor-trail-1"></div>
+<div class="cursor-trail" id="cursor-trail-2" style="opacity: 0.4; width: 12px; height: 12px;"></div>
+<div class="cursor-trail" id="cursor-trail-3" style="opacity: 0.2; width: 16px; height: 16px;"></div>
+
+<script>
+// ═══════════════════════════════════════════════════════════════════════════
+// DIGITAL PARTICLES SYSTEM
+// ═══════════════════════════════════════════════════════════════════════════
+(function initDigitalParticles() {
+  const container = document.getElementById('particles-container');
+  if (!container) return;
+
+  const codeSymbols = ['</', '/>', '{', '}', '()', '=>', '&&', '||', '++', '--', '[]', '{}', '/*', '*/', '//'];
+  const codeKeywords = ['const', 'let', 'func', 'async', 'await', 'return', 'import', 'export', 'class', 'new'];
+  
+  function createParticle() {
+    const particle = document.createElement('div');
+    particle.className = 'particle' + (Math.random() > 0.5 ? ' code-symbol' : '');
+    
+    const isSymbol = Math.random() > 0.4;
+    particle.textContent = isSymbol 
+      ? codeSymbols[Math.floor(Math.random() * codeSymbols.length)]
+      : codeKeywords[Math.floor(Math.random() * codeKeywords.length)];
+    
+    particle.style.left = Math.random() * 100 + '%';
+    particle.style.animationDuration = (15 + Math.random() * 20) + 's';
+    particle.style.animationDelay = Math.random() * 10 + 's';
+    particle.style.fontSize = (0.6 + Math.random() * 0.4) + 'rem';
+    
+    container.appendChild(particle);
+    
+    // Remove particle after animation
+    setTimeout(() => particle.remove(), 35000);
+  }
+
+  // Create initial particles
+  for (let i = 0; i < 15; i++) {
+    setTimeout(() => createParticle(), i * 200);
+  }
+
+  // Continuously spawn new particles
+  setInterval(createParticle, 2000);
+})();
+
+// ═══════════════════════════════════════════════════════════════════════════
+// SCROLL-TRIGGERED REVEAL ANIMATIONS
+// ═══════════════════════════════════════════════════════════════════════════
+(function initScrollReveal() {
+  const revealElements = document.querySelectorAll('.about_gallery-item, .block-card, .testimonial-card, .services-gallery > *, .skills-grid > *, .footer *[class*="content"]');
+  
+  const observerOptions = {
+    root: null,
+    rootMargin: '0px 0px -100px 0px',
+    threshold: 0.1
+  };
+
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('revealed');
+        
+        // Add stagger animation to children
+        const children = entry.target.children;
+        Array.from(children).forEach((child, index) => {
+          child.style.transitionDelay = (index * 0.1) + 's';
+          child.classList.add('revealed');
+        });
+      }
+    });
+  }, observerOptions);
+
+  revealElements.forEach(el => {
+    el.classList.add('reveal-on-scroll');
+    revealObserver.observe(el);
+  });
+})();
+
+// ═══════════════════════════════════════════════════════════════════════════
+// ENHANCED SCROLL PROGRESS BAR (GRADIENT)
+// ═══════════════════════════════════════════════════════════════════════════
+(function initScrollAccent() {
+  const accentBar = document.getElementById('scroll-accent');
+  if (!accentBar) return;
+
+  window.addEventListener('scroll', () => {
+    const scrollTop = window.scrollY;
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const scrollPercent = (scrollTop / docHeight) * 100;
+    accentBar.style.width = scrollPercent + '%';
+  }, { passive: true });
+})();
+
+// ═══════════════════════════════════════════════════════════════════════════
+// CURSOR TRAIL EFFECT
+// ═══════════════════════════════════════════════════════════════════════════
+(function initCursorTrail() {
+  const trails = [
+    document.getElementById('cursor-trail-1'),
+    document.getElementById('cursor-trail-2'),
+    document.getElementById('cursor-trail-3')
+  ];
+  
+  if (!trails[0]) return;
+
+  const positions = trails.map(() => ({ x: 0, y: 0 }));
+  let mouseX = 0, mouseY = 0;
+
+  document.addEventListener('mousemove', (e) => {
+    mouseX = e.clientX;
+    mouseY = e.clientY;
+  }, { passive: true });
+
+  function animateTrails() {
+    positions.forEach((pos, i) => {
+      const speed = 0.15 - (i * 0.04);
+      pos.x += (mouseX - pos.x) * speed;
+      pos.y += (mouseY - pos.y) * speed;
+      
+      if (trails[i]) {
+        trails[i].style.transform = `translate(${pos.x - 4}px, ${pos.y - 4}px)`;
+      }
+    });
+    requestAnimationFrame(animateTrails);
+  }
+
+  // Only show on desktop
+  if (window.matchMedia('(min-width: 992px)').matches) {
+    animateTrails();
+  } else {
+    trails.forEach(t => t && (t.style.display = 'none'));
+  }
+})();
+
+// ═══════════════════════════════════════════════════════════════════════════
+// MAGNETIC HOVER EFFECT
+// ═══════════════════════════════════════════════════════════════════════════
+(function initMagneticEffect() {
+  const magneticElements = document.querySelectorAll('.button, .nav-link, .bs_arrow');
+  
+  magneticElements.forEach(el => {
+    el.classList.add('magnetic-element');
+    
+    el.addEventListener('mousemove', (e) => {
+      const rect = el.getBoundingClientRect();
+      const x = e.clientX - rect.left - rect.width / 2;
+      const y = e.clientY - rect.top - rect.height / 2;
+      
+      el.style.transform = `translate(${x * 0.2}px, ${y * 0.2}px)`;
+    });
+    
+    el.addEventListener('mouseleave', () => {
+      el.style.transform = 'translate(0, 0)';
+    });
+  });
+})();
+
+// ═══════════════════════════════════════════════════════════════════════════
+// TEXT SCRAMBLE EFFECT ON HOVER
+// ═══════════════════════════════════════════════════════════════════════════
+(function initTextScramble() {
+  class TextScramble {
+    constructor(el) {
+      this.el = el;
+      this.chars = '!<>-_\\/[]{}—=+*^?#_abcdefghijklmnopqrstuvwxyz';
+      this.originalText = el.textContent;
+    }
+
+    scramble() {
+      const text = this.originalText;
+      let iteration = 0;
+      const maxIterations = text.length * 3;
+
+      const interval = setInterval(() => {
+        this.el.textContent = text
+          .split('')
+          .map((char, index) => {
+            if (index < iteration / 3) return text[index];
+            return this.chars[Math.floor(Math.random() * this.chars.length)];
+          })
+          .join('');
+
+        iteration++;
+        if (iteration >= maxIterations) {
+          this.el.textContent = text;
+          clearInterval(interval);
+        }
+      }, 30);
+    }
+  }
+
+  const headings = document.querySelectorAll('.heading-style-64px, .heading-style-160px');
+  headings.forEach(heading => {
+    const scrambler = new TextScramble(heading);
+    
+    // Scramble on scroll into view
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          scrambler.scramble();
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.5 });
+
+    observer.observe(heading);
+  });
+})();
+
+// ═══════════════════════════════════════════════════════════════════════════
+// PARALLAX DEPTH EFFECT
+// ═══════════════════════════════════════════════════════════════════════════
+(function initParallaxDepth() {
+  const images = document.querySelectorAll('.image-parallax_image img');
+  
+  images.forEach((img, index) => {
+    img.classList.add('parallax-layer', `depth-${(index % 3) + 1}`);
+  });
+
+  let ticking = false;
+  window.addEventListener('scroll', () => {
+    if (!ticking) {
+      requestAnimationFrame(() => {
+        const scrollY = window.scrollY;
+        document.querySelectorAll('.parallax-layer').forEach(el => {
+          const speed = parseFloat(getComputedStyle(el).getPropertyValue('--parallax-speed')) || 0.1;
+          const rect = el.getBoundingClientRect();
+          const offset = (rect.top + scrollY) * speed;
+          el.style.transform = `translateY(${(scrollY - offset) * speed}px)`;
+        });
+        ticking = false;
+      });
+      ticking = true;
+    }
+  }, { passive: true });
+})();
+
+// ═══════════════════════════════════════════════════════════════════════════
+// SCROLL VELOCITY DETECTION
+// ═══════════════════════════════════════════════════════════════════════════
+(function initScrollVelocity() {
+  let lastScrollY = window.scrollY;
+  let lastTime = Date.now();
+  let scrollTimeout;
+
+  const body = document.body;
+  body.classList.add('velocity-blur');
+
+  window.addEventListener('scroll', () => {
+    const currentY = window.scrollY;
+    const currentTime = Date.now();
+    const velocity = Math.abs(currentY - lastScrollY) / (currentTime - lastTime) * 1000;
+
+    if (velocity > 2000) {
+      body.classList.add('scrolling-fast');
+    }
+
+    clearTimeout(scrollTimeout);
+    scrollTimeout = setTimeout(() => {
+      body.classList.remove('scrolling-fast');
+    }, 100);
+
+    lastScrollY = currentY;
+    lastTime = currentTime;
+  }, { passive: true });
+})();
+
+// ═══════════════════════════════════════════════════════════════════════════
+// GSAP SCROLL-TRIGGERED ANIMATIONS
+// ═══════════════════════════════════════════════════════════════════════════
+document.addEventListener('DOMContentLoaded', () => {
+  if (!window.gsap || !window.ScrollTrigger) return;
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  // Animate section headings with split text effect
+  gsap.utils.toArray('.subheading').forEach(heading => {
+    gsap.fromTo(heading, 
+      { opacity: 0, x: -30, skewX: 5 },
+      {
+        opacity: 0.6,
+        x: 0,
+        skewX: 0,
+        duration: 0.8,
+        ease: 'power3.out',
+        scrollTrigger: {
+          trigger: heading,
+          start: 'top 85%',
+          toggleActions: 'play none none reverse'
+        }
+      }
+    );
+  });
+
+  // Stagger reveal for gallery items
+  gsap.utils.toArray('.services-gallery').forEach(gallery => {
+    const items = gallery.querySelectorAll('.image-parallax');
+    gsap.fromTo(items,
+      { y: 100, opacity: 0, scale: 0.9 },
+      {
+        y: 0,
+        opacity: 1,
+        scale: 1,
+        duration: 0.8,
+        stagger: 0.15,
+        ease: 'power3.out',
+        scrollTrigger: {
+          trigger: gallery,
+          start: 'top 80%',
+          toggleActions: 'play none none reverse'
+        }
+      }
+    );
+  });
+
+  // Animate skill cards with 3D rotation
+  gsap.utils.toArray('.block-card').forEach((card, i) => {
+    gsap.fromTo(card,
+      { 
+        opacity: 0, 
+        y: 60, 
+        rotateX: 15,
+        transformPerspective: 1000 
+      },
+      {
+        opacity: 1,
+        y: 0,
+        rotateX: 0,
+        duration: 0.7,
+        delay: i * 0.05,
+        ease: 'power3.out',
+        scrollTrigger: {
+          trigger: card,
+          start: 'top 90%',
+          toggleActions: 'play none none reverse'
+        }
+      }
+    );
+  });
+
+  // Horizontal text scroll animation for marquees
+  gsap.utils.toArray('[data-marquee-scroll-direction-target]').forEach(marquee => {
+    gsap.to(marquee, {
+      scale: 1.02,
+      scrollTrigger: {
+        trigger: marquee,
+        start: 'top bottom',
+        end: 'bottom top',
+        scrub: 1
+      }
+    });
+  });
+
+  // Footer reveal animation
+  const footer = document.querySelector('.footer');
+  if (footer) {
+    gsap.fromTo(footer.children,
+      { y: 50, opacity: 0 },
+      {
+        y: 0,
+        opacity: 1,
+        stagger: 0.1,
+        duration: 0.8,
+        ease: 'power3.out',
+        scrollTrigger: {
+          trigger: footer,
+          start: 'top 90%',
+          toggleActions: 'play none none reverse'
+        }
+      }
+    );
+  }
+
+  // About section image reveal
+  gsap.utils.toArray('.about_gallery-item').forEach((item, i) => {
+    gsap.fromTo(item,
+      { clipPath: 'inset(100% 0% 0% 0%)' },
+      {
+        clipPath: 'inset(0% 0% 0% 0%)',
+        duration: 1.2,
+        delay: i * 0.2,
+        ease: 'power4.inOut',
+        scrollTrigger: {
+          trigger: item,
+          start: 'top 85%',
+          toggleActions: 'play none none reverse'
+        }
+      }
+    );
+  });
+
+  // Testimonial cards slide in from sides
+  gsap.utils.toArray('.testimonial-card').forEach((card, i) => {
+    const direction = i % 2 === 0 ? -100 : 100;
+    gsap.fromTo(card,
+      { x: direction, opacity: 0 },
+      {
+        x: 0,
+        opacity: 1,
+        duration: 0.8,
+        ease: 'power3.out',
+        scrollTrigger: {
+          trigger: card,
+          start: 'top 85%',
+          toggleActions: 'play none none reverse'
+        }
+      }
+    );
+  });
+
+  // Scale and blur effect on scroll for showcase section
+  const showcase = document.querySelector('.section_showcase');
+  if (showcase) {
+    gsap.to(showcase, {
+      scale: 0.95,
+      filter: 'blur(2px)',
+      scrollTrigger: {
+        trigger: showcase,
+        start: 'bottom bottom',
+        end: 'bottom top',
+        scrub: 1
+      }
+    });
+  }
+
+  // Pin and animate experience section
+  const experience = document.querySelector('.section_experience');
+  if (experience) {
+    gsap.fromTo('.testimonial-card.is-testimonials',
+      { 
+        borderColor: 'rgba(230, 230, 230, 0.1)'
+      },
+      {
+        borderColor: 'rgba(230, 230, 230, 0.3)',
+        stagger: 0.2,
+        scrollTrigger: {
+          trigger: experience,
+          start: 'top center',
+          end: 'bottom center',
+          scrub: 1
+        }
+      }
+    );
+  }
+});
+
+// ═══════════════════════════════════════════════════════════════════════════
+// FLOATING CODE BRACKETS PARALLAX
+// ═══════════════════════════════════════════════════════════════════════════
+(function initCodeBrackets() {
+  const leftBracket = document.querySelector('.code-bracket.left');
+  const rightBracket = document.querySelector('.code-bracket.right');
+  
+  if (!leftBracket || !rightBracket) return;
+
+  window.addEventListener('scroll', () => {
+    const scrollY = window.scrollY;
+    const docHeight = document.documentElement.scrollHeight;
+    const progress = scrollY / docHeight;
+
+    leftBracket.style.transform = `translateY(calc(-50% + ${progress * 200}px)) rotate(${progress * 10}deg)`;
+    rightBracket.style.transform = `translateY(calc(-50% - ${progress * 200}px)) rotate(${-progress * 10}deg)`;
+    
+    // Fade out as you scroll
+    const opacity = Math.max(0.03 - (progress * 0.03), 0);
+    leftBracket.style.opacity = opacity;
+    rightBracket.style.opacity = opacity;
+  }, { passive: true });
+})();
+
+// ═══════════════════════════════════════════════════════════════════════════
+// IMAGE HOVER 3D TILT
+// ═══════════════════════════════════════════════════════════════════════════
+(function initImage3DTilt() {
+  const images = document.querySelectorAll('.sc-gallery_item-card, .about_gallery-item');
+  
+  images.forEach(img => {
+    img.classList.add('card-3d');
+    
+    img.addEventListener('mousemove', (e) => {
+      const rect = img.getBoundingClientRect();
+      const x = (e.clientX - rect.left) / rect.width - 0.5;
+      const y = (e.clientY - rect.top) / rect.height - 0.5;
+      
+      img.style.transform = `perspective(1000px) rotateY(${x * 10}deg) rotateX(${-y * 10}deg) scale(1.02)`;
+    });
+    
+    img.addEventListener('mouseleave', () => {
+      img.style.transform = 'perspective(1000px) rotateY(0) rotateX(0) scale(1)';
+    });
+  });
+})();
+
+console.log('[v0] Enhanced scroll animations and digital assets initialized');
+
+// ═══════════════════════════════════════════════════════════════════════════
+// SECTION COLOR TRANSITION EFFECT
+// ═══════════════════════════════════════════════════════════════════════════
+(function initSectionTransitions() {
+  const sections = document.querySelectorAll('[color-mode-scroll]');
+  
+  sections.forEach(section => {
+    const colorMode = section.getAttribute('color-mode-scroll');
+    
+    ScrollTrigger.create({
+      trigger: section,
+      start: 'top center',
+      end: 'bottom center',
+      onEnter: () => {
+        document.body.style.transition = 'background-color 0.8s ease';
+      },
+      onLeave: () => {
+        document.body.style.transition = 'background-color 0.8s ease';
+      }
+    });
+  });
+})();
+
+// ═══════════════════════════════════════════════════════════════════════════
+// DIGITAL BACKGROUND PARALLAX
+// ═══════════════════════════════════════════════════════════════════════════
+(function initDigitalBgParallax() {
+  const layer1 = document.querySelector('.digital-bg-layer.layer-1');
+  const layer2 = document.querySelector('.digital-bg-layer.layer-2');
+  
+  if (!layer1 && !layer2) return;
+  
+  window.addEventListener('scroll', () => {
+    const scrollY = window.scrollY;
+    const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+    const progress = scrollY / maxScroll;
+    
+    if (layer1) {
+      layer1.style.transform = `translateY(${scrollY * 0.1}px) scale(${1 + progress * 0.1})`;
+      layer1.style.opacity = Math.max(0.08 - progress * 0.05, 0.02);
+    }
+    
+    if (layer2) {
+      layer2.style.transform = `translate(${progress * -100}px, ${progress * 100}px) rotate(${progress * 45}deg)`;
+    }
+  }, { passive: true });
+})();
+
+// ═══════════════════════════════════════════════════════════════════════════
+// SMOOTH COUNTER ANIMATION
+// ═══════════════════════════════════════════════════════════════════════════
+(function initCounterAnimation() {
+  const counters = document.querySelectorAll('[fs-countitems-element="value"]');
+  
+  counters.forEach(counter => {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const target = parseInt(counter.textContent) || 0;
+          let current = 0;
+          const duration = 1500;
+          const increment = target / (duration / 16);
+          
+          const animate = () => {
+            current += increment;
+            if (current < target) {
+              counter.textContent = String(Math.floor(current)).padStart(2, '0');
+              requestAnimationFrame(animate);
+            } else {
+              counter.textContent = String(target).padStart(2, '0');
+            }
+          };
+          
+          animate();
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.5 });
+    
+    observer.observe(counter);
+  });
+})();
+
+// ═══════════════════════════════════════════════════════════════════════════
+// HOVER RIPPLE EFFECT
+// ═══════════════════════════════════════════════════════════════════════════
+(function initRippleEffect() {
+  const rippleElements = document.querySelectorAll('.button, .sc-gallery_item-card');
+  
+  rippleElements.forEach(el => {
+    el.addEventListener('click', function(e) {
+      const rect = el.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      
+      const ripple = document.createElement('span');
+      ripple.style.cssText = `
+        position: absolute;
+        border-radius: 50%;
+        background: rgba(100, 255, 218, 0.3);
+        transform: scale(0);
+        animation: ripple-animation 0.6s ease-out forwards;
+        pointer-events: none;
+        left: ${x}px;
+        top: ${y}px;
+        width: 10px;
+        height: 10px;
+        margin-left: -5px;
+        margin-top: -5px;
+      `;
+      
+      el.style.position = 'relative';
+      el.style.overflow = 'hidden';
+      el.appendChild(ripple);
+      
+      setTimeout(() => ripple.remove(), 600);
+    });
+  });
+  
+  // Add ripple animation keyframes
+  const style = document.createElement('style');
+  style.textContent = `
+    @keyframes ripple-animation {
+      to {
+        transform: scale(40);
+        opacity: 0;
+      }
+    }
+  `;
+  document.head.appendChild(style);
+})();
+
+// ═══════════════════════════════════════════════════════════════════════════
+// TYPING EFFECT FOR HERO TEXT
+// ═══════════════════════════════════════════════════════════════════════════
+(function initTypingEffect() {
+  const heroSubtext = document.querySelector('.sc-intro .text-size-24px');
+  if (!heroSubtext) return;
+  
+  const originalText = heroSubtext.textContent;
+  let hasTyped = false;
+  
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting && !hasTyped) {
+        hasTyped = true;
+        heroSubtext.textContent = '';
+        heroSubtext.style.borderRight = '2px solid currentColor';
+        
+        let i = 0;
+        const typeInterval = setInterval(() => {
+          if (i < originalText.length) {
+            heroSubtext.textContent += originalText.charAt(i);
+            i++;
+          } else {
+            clearInterval(typeInterval);
+            setTimeout(() => {
+              heroSubtext.style.borderRight = 'none';
+            }, 1000);
+          }
+        }, 50);
+      }
+    });
+  }, { threshold: 0.5 });
+  
+  observer.observe(heroSubtext);
+})();
+
+// ═══════════════════════════════════════════════════════════════════════════
+// NAV SCROLL STATE
+// ═══════════════════════════════════════════════════════════════════════════
+(function initNavScrollState() {
+  const nav = document.querySelector('.nav');
+  if (!nav) return;
+  
+  let lastScroll = 0;
+  
+  window.addEventListener('scroll', () => {
+    const currentScroll = window.scrollY;
+    
+    if (currentScroll > 100) {
+      nav.classList.add('scrolled');
+    } else {
+      nav.classList.remove('scrolled');
+    }
+    
+    lastScroll = currentScroll;
+  }, { passive: true });
+})();
 </script>
 </body></html>
