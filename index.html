@@ -198,12 +198,12 @@ h1.heading-style-160px:first-child::after {
   transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-/* Enhanced button glow effect - no blur */
+/* Enhanced button glow effect - monochrome */
 .button::before {
   content: '';
   position: absolute;
   inset: -2px;
-  background: linear-gradient(135deg, rgba(100, 255, 218, 0.2), rgba(187, 134, 252, 0.2));
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.05));
   border-radius: inherit;
   opacity: 0;
   transition: opacity 0.4s ease;
@@ -263,7 +263,7 @@ h1.heading-style-160px:first-child::after {
 a:focus-visible,
 button:focus-visible,
 .button:focus-visible {
-  outline: 2px solid rgba(100, 255, 218, 0.8);
+  outline: 2px solid rgba(255, 255, 255, 0.6);
   outline-offset: 4px;
 }
 
@@ -356,7 +356,45 @@ button:focus-visible,
 
 /* Skills section card glow */
 .section_skills .block-card:hover {
-  box-shadow: 0 0 30px rgba(100, 255, 218, 0.1);
+  box-shadow: 0 0 30px rgba(255, 255, 255, 0.08);
+  transform: translateY(-2px);
+}
+
+/* Skills card stagger reveal */
+.section_skills .block-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.section_skills .block-card::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.04), transparent);
+  transition: left 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  pointer-events: none;
+}
+
+.section_skills .block-card:hover::after {
+  left: 150%;
+}
+
+/* Skills section animated border */
+.section_skills .block-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border: 1px solid rgba(255, 255, 255, 0);
+  border-radius: inherit;
+  transition: border-color 0.4s ease;
+  pointer-events: none;
+}
+
+.section_skills .block-card:hover::before {
+  border-color: rgba(255, 255, 255, 0.15);
 }
 
 /* Experience card timeline dot */
@@ -368,8 +406,77 @@ button:focus-visible,
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  background: rgba(100, 255, 218, 0.6);
-  box-shadow: 0 0 10px rgba(100, 255, 218, 0.4);
+  background: rgba(255, 255, 255, 0.6);
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+}
+
+/* Skills section noise texture */
+.section_skills {
+  position: relative;
+}
+
+.section_skills::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.4;
+}
+
+/* Skills section horizontal rule accents */
+.section_skills::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.12), transparent);
+}
+
+/* Experience section top accent */
+.section_experience::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+}
+
+/* Section number stamps */
+.section_skills .subheading::after {
+  content: '//02';
+  position: absolute;
+  right: -3rem;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 0.6rem;
+  opacity: 0.2;
+  letter-spacing: 0.15em;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+/* Dot pattern for experience section */
+.section_experience {
+  position: relative;
+}
+
+.section_experience::after {
+  content: '';
+  position: absolute;
+  top: 10%;
+  right: 2%;
+  width: 80px;
+  height: 80px;
+  background-image: radial-gradient(circle, rgba(255,255,255,0.08) 1px, transparent 1px);
+  background-size: 10px 10px;
+  pointer-events: none;
 }
 
 /* Responsive adjustments */
@@ -380,6 +487,14 @@ button:focus-visible,
   
   .cursor-trail {
     display: none !important;
+  }
+  
+  .section_skills .subheading::after {
+    display: none;
+  }
+  
+  .section_experience::after {
+    display: none;
   }
 }
 
@@ -427,7 +542,7 @@ button:focus-visible,
   width: 150px;
   height: 150px;
   background: rgba(26, 26, 26, 0.95);
-  border: 1px solid rgba(100, 255, 218, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.15);
   overflow: hidden;
   backface-visibility: visible;
   display: flex;
@@ -487,7 +602,7 @@ button:focus-visible,
   content: '';
   position: absolute;
   inset: -20px;
-  background: radial-gradient(circle, rgba(100, 255, 218, 0.1) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
   border-radius: 50%;
   z-index: -1;
   opacity: 0.5;
@@ -2315,14 +2430,14 @@ document.addEventListener("DOMContentLoaded", () => {
 .particle {
   position: absolute;
   font-family: 'JetBrains Mono', monospace;
-  color: rgba(100, 255, 218, 0.15);
+  color: rgba(255, 255, 255, 0.15);
   font-size: 0.7rem;
   animation: float-particle 20s linear infinite;
   opacity: 0;
 }
 
 .particle.code-symbol {
-  color: rgba(187, 134, 252, 0.12);
+  color: rgba(255, 255, 255, 0.12);
 }
 
 @keyframes float-particle {
@@ -2534,7 +2649,7 @@ document.addEventListener("DOMContentLoaded", () => {
   position: fixed;
   width: 8px;
   height: 8px;
-  background: rgba(100, 255, 218, 0.6);
+  background: rgba(255, 255, 255, 0.6);
   border-radius: 50%;
   pointer-events: none;
   z-index: 9999;
@@ -2626,7 +2741,7 @@ document.addEventListener("DOMContentLoaded", () => {
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(100, 255, 218, 0.3), transparent);
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
   transform: translateX(-100%);
   animation: shimmer-line 3s ease-in-out infinite;
 }
@@ -2656,8 +2771,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
 /* Glow pulse for accent elements */
 @keyframes glow-pulse {
-  0%, 100% { box-shadow: 0 0 5px rgba(100, 255, 218, 0.3); }
-  50% { box-shadow: 0 0 20px rgba(100, 255, 218, 0.5); }
+  0%, 100% { box-shadow: 0 0 5px rgba(255, 255, 255, 0.3); }
+  50% { box-shadow: 0 0 20px rgba(255, 255, 255, 0.5); }
 }
 
 .cube-face {
@@ -2690,7 +2805,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 /* Progress indicator glow */
 .scroll-progress_wrap {
-  filter: drop-shadow(0 0 8px rgba(100, 255, 218, 0.4));
+  filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.4));
 }
 
 /* Nav link underline animation */
@@ -2760,7 +2875,7 @@ section {
 /* Subtle border glow on focus */
 .button:focus-visible,
 .text-link:focus-visible {
-  outline: 2px solid rgba(100, 255, 218, 0.6);
+  outline: 2px solid rgba(255, 255, 255, 0.6);
   outline-offset: 3px;
 }
 
@@ -2848,10 +2963,10 @@ section {
   pointer-events: none;
   z-index: -1;
   background-image: 
-    linear-gradient(rgba(100, 255, 218, 0.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(100, 255, 218, 0.03) 1px, transparent 1px);
+    linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
   background-size: 60px 60px;
-  animation: grid-move 20s linear infinite;
+  animation: grid-move 30s linear infinite;
 }
 
 @keyframes grid-move {
@@ -2881,7 +2996,7 @@ section {
 .orb-1 {
   width: 400px;
   height: 400px;
-  background: radial-gradient(circle, rgba(100, 255, 218, 0.4) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.4) 0%, transparent 70%);
   top: 10%;
   left: -10%;
   animation: float-orb-1 25s ease-in-out infinite;
@@ -2890,7 +3005,7 @@ section {
 .orb-2 {
   width: 300px;
   height: 300px;
-  background: radial-gradient(circle, rgba(187, 134, 252, 0.3) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.3) 0%, transparent 70%);
   top: 60%;
   right: -5%;
   animation: float-orb-2 30s ease-in-out infinite;
@@ -2899,7 +3014,7 @@ section {
 .orb-3 {
   width: 250px;
   height: 250px;
-  background: radial-gradient(circle, rgba(255, 107, 107, 0.2) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.2) 0%, transparent 70%);
   bottom: 20%;
   left: 30%;
   animation: float-orb-3 35s ease-in-out infinite;
@@ -2959,7 +3074,7 @@ section {
   top: -100%;
   font-family: 'JetBrains Mono', monospace;
   font-size: 14px;
-  color: rgba(100, 255, 218, 0.15);
+  color: rgba(255, 255, 255, 0.15);
   writing-mode: vertical-rl;
   text-orientation: mixed;
   animation: matrix-fall linear infinite;
@@ -2975,7 +3090,7 @@ section {
 .glow-line {
   position: fixed;
   height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(100, 255, 218, 0.5), transparent);
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.5), transparent);
   pointer-events: none;
   z-index: -1;
 }
@@ -3025,7 +3140,7 @@ section {
   width: 300px;
   height: 300px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(100, 255, 218, 0.06) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.04) 0%, transparent 70%);
   pointer-events: none;
   z-index: 0;
   transform: translate(-50%, -50%);
@@ -3051,7 +3166,7 @@ section {
 .corner-accent::after {
   content: '';
   position: absolute;
-  background: rgba(100, 255, 218, 0.6);
+  background: rgba(255, 255, 255, 0.6);
 }
 
 .corner-accent.top-left { top: 20px; left: 20px; }
@@ -3077,7 +3192,7 @@ section {
   right: 80px;
   font-family: 'JetBrains Mono', monospace;
   font-size: 10px;
-  color: rgba(100, 255, 218, 0.3);
+  color: rgba(255, 255, 255, 0.3);
   pointer-events: none;
   z-index: 100;
   letter-spacing: 0.1em;
@@ -3258,7 +3373,7 @@ section {
   }, { passive: true });
 })();
 
-// ═══════════════════════════════════════════════════════════════════════════
+// ═══════════════════════════════════════════════════���═══════════════════════
 // CURSOR TRAIL EFFECT
 // ═══════════════════════════════════════════════════════════════════════════
 (function initCursorTrail() {
@@ -3625,7 +3740,7 @@ console.log('[v0] Enhanced scroll animations and digital assets initialized');
       ripple.style.cssText = `
         position: absolute;
         border-radius: 50%;
-        background: rgba(100, 255, 218, 0.3);
+        background: rgba(255, 255, 255, 0.3);
         transform: scale(0);
         animation: ripple-animation 0.6s ease-out forwards;
         pointer-events: none;
